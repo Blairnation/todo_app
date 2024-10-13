@@ -22,4 +22,4 @@ COPY . /app/
 EXPOSE 8000
 
 # Start the Django server using Gunicorn
-CMD ["gunicorn", "base.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "todo_app.wsgi:application", "--bind", "0.0.0.0:8000"]
