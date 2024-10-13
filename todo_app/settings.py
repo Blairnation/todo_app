@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ve73(aa_m7x4g$f-&ami81k^ode07x$a_0@+t-7qsr^n!g24j_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['todo-app-f4ml.onrender.com',
     'localhost',  
