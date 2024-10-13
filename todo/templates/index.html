@@ -87,7 +87,7 @@
                     <form action="{% url 'todo:update-todo' %}" method="POST" style="display:inline;">
                         {% csrf_token %}
                         <input type="hidden" name="todo_id" value="{{ todo.id }}">
-                        <button type="submit" class="btn btn-info">Mark as Completed</button>
+                        <button type="submit" class="btn btn-info">Done</button>
                     </form>
                     {% endif %}
 
