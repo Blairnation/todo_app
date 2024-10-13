@@ -79,7 +79,7 @@ TEMPLATES = [
 ]
 
 # CORS settings
-CORS_ALLOWED_ORIGINS_ALL = True 
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
 WSGI_APPLICATION = 'todo_app.wsgi.application'
