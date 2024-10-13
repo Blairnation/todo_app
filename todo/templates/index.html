@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <!-- Adding Bootstrap CDN for styles -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+        .todo-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #17a2b8;
+        }
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-left: 5px solid #17a2b8;
+            border-radius: 5px;
+        }
+        .todo-item.completed {
+            background-color: #d4edda;
+            text-decoration: line-through;
+            color: #155724;
+        }
+        form {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 75%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #17a2b8;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .btn {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <h1>Todo List</h1>
+
+        <!-- Form to create a new todo -->
+        <form action="{% url 'todo:create-todo' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="body" placeholder="Enter new todo" required>
+            <button type="submit" class="btn btn-success">Add Todo</button>
+        </form>
+
+        <!-- Display the list of todos -->
+        <ul>
+            {% for todo in todos %}
+            <li class="todo-item {% if todo.completed %}completed{% endif %}">
+                <span>{{ todo.body }}</span>
+                <div>
+                    <!-- Form to update todo status (mark as completed) -->
+                    {% if not todo.completed %}
+                    <form action="{% url 'todo:update-todo' %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="todo_id" value="{{ todo.id }}">
+                        <button type="submit" class="btn btn-info">Mark as Completed</button>
+                    </form>
+                    {% endif %}
+
+                    <!-- Form to delete todo -->
+                    <form action="{% url 'todo:delete-todo' %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="todo_id" value="{{ todo.id }}">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Adding Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

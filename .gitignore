@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual Environment
+env/
+*.env
+
+# Django Stuff
+db.sqlite3
+media/
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*.pyo
+*.pyd
+
+# System files
+.DS_Store
