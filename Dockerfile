@@ -18,6 +18,9 @@ RUN pip install -r requirements.txt
 # Copy the rest of your app code to the container
 COPY . /app/
 
+# Collect static files
+RUN python manage.py collectstatic --noinput
+
 # Expose the application port
 EXPOSE 8000
 
