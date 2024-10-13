@@ -21,6 +21,9 @@ COPY . /app/
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
+# Run database migrations
+RUN python manage.py migrate --noinput
+
 # Expose the application port
 EXPOSE 8000
 

@@ -7,9 +7,6 @@ __pycache__/
 env/
 *.env
 
-# Django Stuff
-db.sqlite3
-media/
 
 # Byte-compiled / optimized / DLL files
 *.py[cod]

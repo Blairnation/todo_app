@@ -4,5 +4,5 @@ services:
     env: docker
     plan: free
     dockerfilePath: Dockerfile
-    # buildCommand: ""
-    # startCommand: gunicorn todo_app.wsgi:application --bind 0.0.0.0:${PORT:-8000}
+    buildCommand: ""
+    startCommand: gunicorn todo.wsgi:application --bind 0.0.0.0:${PORT:-8000}
